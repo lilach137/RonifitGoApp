@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "675861904957",
+    "project_id": "ronifitgo",
+    "storage_bucket": "ronifitgo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675861904957:android:aa899bc1a9019c9465b454",
+        "android_client_info": {
+          "package_name": "com.example.ronifitgo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675861904957-9cqm6791u7qper6v6pbgiomgnk5d34b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq-pYNSZN2ZVbqetVw5v4JRNpPr8G26uA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675861904957-9cqm6791u7qper6v6pbgiomgnk5d34b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

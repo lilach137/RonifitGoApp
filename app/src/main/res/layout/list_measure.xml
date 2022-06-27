@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:elevation="8dp"
+    app:cardElevation="8dp"
+    android:layoutDirection="rtl"
+    android:layout_margin="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/listMeasure_TXT_dateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="תאריך השקילה :"
+        android:textSize="15sp"
+        android:layout_gravity="center_horizontal"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/listMeasure_IMG_pic"
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_weighning" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layoutDirection="rtl"
+            android:layout_marginRight="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/listMeasure_TXT_armCirc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="זרוע :"
+                android:textSize="15sp"
+
+
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/listMeasure_TXT_bustCirc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="חזה :"
+                android:textSize="15dp"
+
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/listMeasure_TXT_waistCirc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="מותן :"
+                android:textSize="15dp"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/listMeasure_TXT_navelCirc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="טבור"
+                android:textSize="15sp"
+
+
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/listMeasure_TXT_buttockCirc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ישבן"
+                android:textSize="15dp"
+
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/listMeasure_TXT_hipCirc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ירך"
+                android:textSize="15dp"
+                />
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

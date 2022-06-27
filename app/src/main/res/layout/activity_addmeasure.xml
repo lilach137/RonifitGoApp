@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ronifitgo.Activity_addMeasures"
+    android:background="@drawable/back">
+
+
+    <LinearLayout
+        android:id="@+id/newItem_AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/newItem_LBL_title"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="מדידת הקפים"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/newMeasure_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/newMeasure_BTN_Save"
+        android:layout_below="@+id/newItem_AppBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/newMeasure_ItemPicture"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/icon" />
+
+            <EditText
+                android:id="@+id/newMeasure_TIL_calender"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newMeasure_ItemPicture"
+                android:layout_centerHorizontal="true"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="בחר תאריך"
+                android:textColor="@color/green"
+                android:textColorHint="@color/title"
+                android:textSize="20dp">
+
+            </EditText>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newMeasure_TIL_m1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newMeasure_TIL_calender"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:hint="היקף זרוע"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/green"
+                app:boxStrokeColor="@color/title"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newMeasure_TIEL_m1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="30"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:outlineAmbientShadowColor="@color/title"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/title" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newMeasure_TIL_m2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newMeasure_TIL_m1"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:hint="היקף חזה"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/green"
+                app:boxStrokeColor="@color/title"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newMeasure_TIEL_m2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="30"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:outlineAmbientShadowColor="@color/title"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/title" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newMeasure_TIL_m3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newMeasure_TIL_m2"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:hint="היקף מותן"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/green"
+                app:boxStrokeColor="@color/title"
+                app:boxStrokeWidth="2dp"
+
+                app:hintTextColor="@color/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newMeasure_TIEL_m3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="30"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:outlineAmbientShadowColor="@color/title"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/title" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newMeasure_TIL_m4"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newMeasure_TIL_m3"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:hint="היקף טבור"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/green"
+                app:boxStrokeColor="@color/title"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newMeasure_TIEL_m4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="30"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:outlineAmbientShadowColor="@color/title"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/title" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newMeasure_TIL_m5"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newMeasure_TIL_m4"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:hint="היקף ישבן"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/green"
+                app:boxStrokeColor="@color/title"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newMeasure_TIEL_m5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="30"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:outlineAmbientShadowColor="@color/title"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/title" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newMeasure_TIL_m6"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newMeasure_TIL_m5"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:hint="היקף ירך"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/green"
+                app:boxStrokeColor="@color/title"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newMeasure_TIEL_m6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="30"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:outlineAmbientShadowColor="@color/title"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/title" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/newMeasure_BTN_Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/green"
+        android:text="שמור שינויים"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="30dp" />
+
+
+</RelativeLayout>

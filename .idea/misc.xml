@@ -4,6 +4,35 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/I563474/AndroidStudioProjects/RonifitGo/app/src/main/res/layout/tool_bar.xml" value="0.16438703140830802" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/calculate_btn.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/circle_shape.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/circular_progress_bar.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/female.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/female_black.xml" value="0.1" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/ic_account.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/ic_add.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/ic_back.xml" value="0.1385" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/male.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/male_black.xml" value="0.1" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/drawable/substract.xml" value="0.117" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/activity_addmeasure.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/activity_addweight.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/activity_enter.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/activity_main2.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/activity_sign_up.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/activity_splash.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/dialog.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/fragment_homepage.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/fragment_measures.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/fragment_weights.xml" value="0.22" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/fregment_percentage.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/list.xml" value="0.22" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/list_item.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/list_measure.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/list_weight.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/layout/tool_bar.xml" value="0.3671875" />
+        <entry key="..\:/Users/Lilach Laniado/AndroidStudioProjects/RonifitGoApp/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

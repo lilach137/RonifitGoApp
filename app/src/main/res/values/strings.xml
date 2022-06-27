@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">RonifitGo</string>
+    <string name="tips">טיפים</string>
+    <string name="data">משקלים</string>
+    <string name="Measures">מדדים</string>
+    <string name="profile">פרופיל</string>
+    <string name="add_weight_weekly">הוסף שקילה</string>
+    <string name="add_measures">הוסף מדידה</string>
+    <string name="_18_5_25_kg_m2">18.5 – 25 kg/m2</string>
+    <string name="title_fatPercentage">אחוזי שומן</string>
+    <string name="title_musclePercentage">אחוזי שריר</string>
+    <string name="title_goal">יעד</string>
+    <string name="weight">משקל</string>
+    <string name="age">גיל</string>
+    <string name="height">גובה</string>
+    <string name="male">זכר</string>
+    <string name="female">נקבה</string>
+    <string name="plus">plus</string>
+    <string name="minus">minus</string>
+    <string name="_0cm">0 סמ</string>
+    <string name="_50">50</string>
+    <string name="_19">19</string>
+    <string name="your_result">Your Result</string>
+    <string name="your_age">Your Age</string>
+    <string name="calculate">הוסף את הפרטים שלי</string>
+    <string name="cm">ס"מ</string>
+    <string name="phone_login">התחברות באמצעות טלפון</string>
 </resources>
