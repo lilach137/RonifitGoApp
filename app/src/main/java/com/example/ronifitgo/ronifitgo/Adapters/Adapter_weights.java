@@ -47,8 +47,8 @@ public class Adapter_weights extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         holder.listWeight_TXT_date.setText(weight.getDate().toString());
         holder.listWeight_TXT_weight.setText(String.valueOf(weight.getWeight()));
-        holder.listWeight_TXT_pFat.setText(String.valueOf(weight.getpFat()));
-        holder.listWeight_TXT_pMuscle.setText(String.valueOf(weight.getpMuscle()));
+        holder.listWeight_TXT_pFat.setText(String.valueOf(weight.getpFat())+"%");
+        holder.listWeight_TXT_pMuscle.setText(String.valueOf(weight.getpMuscle())+"%");
 
     }
 

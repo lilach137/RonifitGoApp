@@ -4,23 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ronifitgo.Fragments.fragment_measures">
+    android:layoutDirection="rtl"
+    tools:context=".ronifitgo.Fragments.fragment_tips">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fMeasures_TXT_title"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/font"
-            android:textSize="27dp"
-            android:textStyle="bold"
-            android:text="המדידות שלי" />
 
         <ScrollView
             android:id="@+id/newMeasure_scroll"
@@ -30,16 +21,11 @@
             android:layout_marginBottom="100dp">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_RECYC_myMeasures"
-                android:layout_marginRight="20dp"
+                android:id="@+id/fragment_RECYC_tips"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_marginLeft="30dp"
                 android:clipToPadding="false"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                tools:listitem="@layout/list_measure"
                 />
 
         </ScrollView>

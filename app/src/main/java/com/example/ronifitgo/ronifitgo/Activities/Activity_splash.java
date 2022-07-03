@@ -1,4 +1,4 @@
-package com.example.ronifitgo.ronifitgo;
+package com.example.ronifitgo.ronifitgo.Activities;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +22,6 @@ public class Activity_splash extends AppCompatActivity {
     private ImageView icon;
     final int ANIM_DURATION = 3000;
     private ImageView splash_IMG_logo;
-    private TextView splash_TXT_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +32,6 @@ public class Activity_splash extends AppCompatActivity {
         findViews();
 
         showViewSlideDown(splash_IMG_logo);
-
-        splash_TXT_title.animate().translationY(1600).setDuration(1000).setStartDelay(ANIM_DURATION);
-        //splash_TXT_title.startAnimation(AnimationUtils.loadAnimation(this, R.anim.righttoleft));
 
     }
 
@@ -89,7 +84,7 @@ public class Activity_splash extends AppCompatActivity {
 
     private void findViews() {
         splash_IMG_logo=findViewById(R.id.splash_IMG_logo);
-        splash_TXT_title=findViewById(R.id.splash_TXT_title);
+
     }
 
 

@@ -40,7 +40,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.reflect.Type;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -88,6 +91,7 @@ public class fragment_weights extends Fragment {
     private void initAdapter(){
         myWeightsArrayList = new ArrayList<>();
         myWeightsArrayList = dataManager.getMyWeights();
+
 
         adapter_weights = new Adapter_weights(activity, myWeightsArrayList);
         fragment_RECYC_myWeights.setLayoutManager(new LinearLayoutManager(activity));

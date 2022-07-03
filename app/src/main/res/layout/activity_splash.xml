@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ronifitgo.Activity_enter">
+    tools:context=".ronifitgo.Activities.Activity_enter">
 
     <ImageView
         android:layout_width="match_parent"
@@ -20,33 +20,5 @@
         android:layout_centerInParent="true"
         android:src="@drawable/icon" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/splash_TXT_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/splash_IMG_logo"
-        android:layout_alignBottom="@id/splash_IMG_logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-77dp"
-        android:elevation="8dp"
-        android:paddingBottom="40dp"
-        android:text="welcome to ronifitGo studio"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:visibility="visible" />
 
-    <!--    <com.airbnb.lottie.LottieAnimationView-->
-<!--        android:id="@+id/panel_PRG_bar"-->
-<!--        android:layout_width="150dp"-->
-<!--        android:layout_height="150dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_centerVertical="true"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:layout_marginBottom="55dp"-->
-<!--        android:scaleX="2.5"-->
-<!--        android:scaleY="2.5"-->
-<!--        app:lottie_autoPlay="true"-->
-<!--        app:lottie_loop="true"-->
-<!--        app:lottie_rawRes="@raw/enter_animation"-->
-<!--        app:lottie_speed="0.6" />-->
 </RelativeLayout>

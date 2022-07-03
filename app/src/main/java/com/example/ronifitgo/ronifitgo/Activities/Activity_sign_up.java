@@ -1,11 +1,10 @@
-package com.example.ronifitgo.ronifitgo;
+package com.example.ronifitgo.ronifitgo.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.app.AutomaticZenRule;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -13,14 +12,13 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ronifitgo.R;
 import com.example.ronifitgo.ronifitgo.Object.User;
@@ -45,18 +43,17 @@ import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class Activity_sign_up extends AppCompatActivity {
 
-    private TextView female_text;
-    private TextView male_text;
-    private ImageView signup_IMG_user;
-    private Button calculate;
-    private CardView card_female;
-    private CardView card_male;
-    private TextView height_txt,age;
-    private TextInputEditText login_LBL_name;
-    private TextInputEditText login_LBL_goal;
+
+    private CircleImageView signup_IMG_user;
+    private Button signUp_BTN_save;
+    private TextView signUp_TXT_height;
+    private TextInputEditText signUp_EDT_name,signUp_EDT_weight,signUp_EDT_goal;
+    private TextInputEditText signUp_EDT_age;
     private FloatingActionButton signup_FAB_profile_pic;
 
     private final DataManager dataManager = DataManager.getInstance();
@@ -68,13 +65,9 @@ public class Activity_sign_up extends AppCompatActivity {
 
     private User tempMyUser;
 
-    private float height;
+    private float height,weight,goal;
+    private int age;
 
-    float count_weight = 50;
-    int count_age = 19;
-    private RelativeLayout weight_plus, weight_minus, age_plus, age_minus;
-    int gender = 2;
-    boolean male_clk = true, female_clk = true, check1 = true, check2 = true;
     private String myDownloadUri;
     @Override
 
@@ -87,24 +80,21 @@ public class Activity_sign_up extends AppCompatActivity {
        initButton();
 
        CheckSeekbarStatus();
-       CheckWeight();
-       CheckAge();
 
     }
+
     private void choseCover() {
         ImagePicker.with(Activity_sign_up.this)
-                .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                .compress(1024)
                 .crop(1f, 1f)
                 .maxResultSize(1080, 1080)
-                //Final image resolution will be less than 1080 x 1080(Optional)
                 .start();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        calculate.setEnabled(false);
+        signUp_BTN_save.setEnabled(false);
 
         StorageReference userRef = dataManager.getStorage()
                 .getReference()
@@ -115,7 +105,6 @@ public class Activity_sign_up extends AppCompatActivity {
         Uri uri = data.getData();
         
         signup_IMG_user.setImageURI(uri);
-
         signup_IMG_user.setDrawingCacheEnabled(true);
         signup_IMG_user.buildDrawingCache();
         Bitmap bitmap = ((BitmapDrawable) signup_IMG_user.getDrawable()).getBitmap();
@@ -133,11 +122,8 @@ public class Activity_sign_up extends AppCompatActivity {
                     userRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            //Set the profile URL to the object we created
                             myDownloadUri = uri.toString();
-                            //View Indicates the process of the image uploading Done by making the button Enabled
-                            
-                            calculate.setEnabled(true);
+                            signUp_BTN_save.setEnabled(true);
                         }
                     });
                 }
@@ -145,50 +131,7 @@ public class Activity_sign_up extends AppCompatActivity {
         });
 
     }
-    private void CheckAge() {
 
-        age_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count_age++;
-                age.setText(String.valueOf(count_age));
-            }
-        });
-
-        age_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count_age--;
-                age.setText(String.valueOf(count_age));
-            }
-        });
-    }
-
-    private void CheckWeight() {
-
-        final TextView weight_txt = findViewById(R.id.weight);
-
-        weight_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count_weight += 0.1;
-
-                String formmatedFloatValue = formatter.format(count_weight);
-                weight_txt.setText(formmatedFloatValue);
-            }
-        });
-
-        weight_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count_weight -= 0.1;
-
-                String formmatedFloatValue = formatter.format(count_weight);
-                weight_txt.setText(formmatedFloatValue);
-            }
-        });
-
-    }
 
     private void CheckSeekbarStatus() {
 
@@ -196,8 +139,8 @@ public class Activity_sign_up extends AppCompatActivity {
         Seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                String ht = progress + getResources().getString(R.string.cm);
-                height_txt.setText(ht);
+                String ht = progress + " " +getResources().getString(R.string.cm);
+                signUp_TXT_height.setText(ht);
                 height = (float)(progress)/100;
             }
 
@@ -212,14 +155,15 @@ public class Activity_sign_up extends AppCompatActivity {
     }
 
     private void saveData() {
-        if(female_clk){
-            gender = 1;
-        }
+
         String userID = dataManager.getFirebaseAuth().getCurrentUser().getUid();
-        String userName = login_LBL_name.getText().toString(); ;
+        String userName = signUp_EDT_name.getText().toString(); ;
         String userPhone = dataManager.getFirebaseAuth().getCurrentUser().getPhoneNumber();
-        float goal =Float.parseFloat(login_LBL_goal.getText().toString());
-        tempMyUser = new User(userID, userPhone,count_age,count_weight,height,userName,gender,goal);
+        goal =Float.parseFloat(signUp_EDT_goal.getText().toString());
+        weight =Float.parseFloat(signUp_EDT_weight.getText().toString());
+        age = Integer.valueOf(signUp_EDT_age.getText().toString());
+        tempMyUser = new User(userID, userPhone,age,weight,height,userName,goal);
+
         if(myDownloadUri != null){
             tempMyUser.setProfileImgUrl(myDownloadUri);
         }
@@ -239,7 +183,6 @@ public class Activity_sign_up extends AppCompatActivity {
             }
         });
 
-        //Store the user in Firestore by UID when stored successfully move to Main Activity
         db.collection(KEYS.KEY_USERS)
                 .document(userToStore.getUserId())
                 .set(userToStore)
@@ -247,7 +190,7 @@ public class Activity_sign_up extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d("pttt", "DocumentSnapshot Successfully written!");
-                        startActivity(new Intent(Activity_sign_up.this, MainActivity.class));
+                        startActivity(new Intent(Activity_sign_up.this, Activity_main_user.class));
                         finish();
                     }
 
@@ -276,74 +219,29 @@ public class Activity_sign_up extends AppCompatActivity {
                 choseCover();
             }
         });
-        calculate.setOnClickListener(new View.OnClickListener() {
+        signUp_BTN_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveData();
+                Toast.makeText(getApplicationContext(),"הפרטים שלך נשמרו בהצלחה!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
-        card_male.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (check1) {
 
-                    if (male_clk) {
-
-                        male_text.setTextColor(Color.parseColor("#FFFFFF"));
-                        male_text.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.male_black,0,0);
-                        male_clk = false;
-                        check2 = false;
-
-                    } else {
-
-                        male_text.setTextColor(Color.parseColor("#8D8E99"));
-                        male_text.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.male,0,0);
-                        male_clk = true;
-                        check2 = true;
-                    }
-                }
-            }
-        });
-        card_female.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (check2) {
-                    if (female_clk) {
-                        female_text.setTextColor(Color.parseColor("#FFFFFF"));
-                        female_text.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.female_black,0,0);
-                        female_clk = false;
-                        check1 = false;
-                    }
-                    else  {
-
-                        female_text.setTextColor(Color.parseColor("#8D8E99"));
-                        female_text.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.female,0,0);
-                        female_clk = true;
-                        check1 = true;
-                    }
-                }
-            }
-        });
     }
 
     public void findView(){
-        height_txt = findViewById(R.id.height_txt);
-        signup_IMG_user =findViewById(R.id.signup_IMG_user);
-        female_text = findViewById(R.id.female);
-        male_text = findViewById(R.id.male);
-        calculate = findViewById(R.id.calculate);
-        card_female = findViewById(R.id.cardView_female);
-        card_male = findViewById(R.id.cardView_male);
+        signup_IMG_user = findViewById(R.id. signup_IMG_user);
+        signUp_BTN_save = findViewById(R.id. signUp_BTN_save);
+        signUp_TXT_height = findViewById(R.id.signUp_TXT_height);
+        signUp_EDT_age = findViewById(R.id.signUp_EDT_age);
+        signUp_EDT_name = findViewById(R.id.signUp_EDT_name);
+        signUp_EDT_weight = findViewById(R.id.signUp_EDT_weight);
+        signUp_EDT_goal = findViewById(R.id.signUp_EDT_goal);
         signup_FAB_profile_pic = findViewById(R.id.signup_FAB_profile_pic);
-        age_minus = findViewById(R.id.age_minus1);
-        age_plus = findViewById(R.id.age_plus1);
-        age = findViewById(R.id.age);
-        weight_minus = findViewById(R.id.weight_minus);
-        weight_plus = findViewById(R.id.weight_plus);
-        login_LBL_name = findViewById(R.id.login_LBL_name);
-        login_LBL_goal = findViewById(R.id.login_LBL_goal);
     }
+
 
     @Override
     protected void onStop() {
@@ -354,7 +252,9 @@ public class Activity_sign_up extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        //TODO erase UID doc from DB
         dataManager.getFirebaseAuth().signOut();
     }
+
+
+
 }

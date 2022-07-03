@@ -12,7 +12,7 @@ public class Measure {
     private float buttockCirc;
     private float hipCirc;
     private Date date;
-    private String image_cover = "https://firebasestorage.googleapis.com/v0/b/superme-e69d5.appspot.com/o/images%2Fimg_default_list_cover.jpg?alt=media&token=60b8db0a-91fd-4a10-9bc3-47418f158da1";
+    //private String image_cover = "https://firebasestorage.googleapis.com/v0/b/superme-e69d5.appspot.com/o/images%2Fimg_default_list_cover.jpg?alt=media&token=60b8db0a-91fd-4a10-9bc3-47418f158da1";
 
     public Measure(float armCirc, float bustCirc, float waistCirc, float navelCirc, float buttockCirc, float hipCirc, Date date) {
         this.measureId = UUID.randomUUID().toString();
@@ -23,10 +23,11 @@ public class Measure {
         this.buttockCirc = buttockCirc;
         this.hipCirc = hipCirc;
         this.date = date;
-        this.image_cover = "https://firebasestorage.googleapis.com/v0/b/superme-e69d5.appspot.com/o/images%2Fimg_default_list_cover.jpg?alt=media&token=60b8db0a-91fd-4a10-9bc3-47418f158da1";
+        this.ImgUrl = " ";
     }
 
     public Measure() {
+        this.measureId = UUID.randomUUID().toString();
     }
 
 
@@ -102,12 +103,13 @@ public class Measure {
         return this;
     }
 
-    public String getImage_cover() {
-        return image_cover;
+    public String getImgUrl() {
+        return ImgUrl;
     }
 
-    public Measure setImage_cover(String image_cover) {
-        this.image_cover = image_cover;
-        return this;
+    public void setImgUrl(String imgUrl) {
+        ImgUrl = imgUrl;
     }
+
+
 }

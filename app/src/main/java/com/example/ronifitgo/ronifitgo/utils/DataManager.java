@@ -1,11 +1,19 @@
 package com.example.ronifitgo.ronifitgo.utils;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 
+import com.example.ronifitgo.ronifitgo.Activities.Activity_enter;
+import com.example.ronifitgo.ronifitgo.Activities.Activity_main_user;
+import com.example.ronifitgo.ronifitgo.Activities.Activity_sign_up;
 import com.example.ronifitgo.ronifitgo.Object.Measure;
+import com.example.ronifitgo.ronifitgo.Object.Tip;
 import com.example.ronifitgo.ronifitgo.Object.User;
 import com.example.ronifitgo.ronifitgo.Object.Weight;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +32,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class DataManager {
 
@@ -39,7 +48,8 @@ public class DataManager {
 
     private static ArrayList<Weight> myWeights;
     private static ArrayList<Measure> myMeasures;
-    private static Weight lastWeight;
+    private static ArrayList<Tip> tips;
+
 
 
     private static DataManager single_instance = null;
@@ -56,11 +66,18 @@ public class DataManager {
         return single_instance;
     }
 
+    public static void restart(){
+        myWeights = new ArrayList<>();
+        myMeasures = new ArrayList<>();
+
+    }
+
     public static DataManager initHelper() {
         if (single_instance == null) {
             single_instance = new DataManager();
             myWeights = new ArrayList<>();
             myMeasures = new ArrayList<>();
+            tips = new ArrayList<>();
         }
         return single_instance;
     }
@@ -92,16 +109,6 @@ public class DataManager {
         this.currentUser = currentUser;
         return this;
     }
-
-    public Weight getLastWeight() {
-        return lastWeight;
-    }
-
-    public DataManager setLastWeight(Weight lastWeight) {
-        DataManager.lastWeight = lastWeight;
-        return this;
-    }
-
     public String getCurrentWeightUid() {
         return currentWeightUid;
     }
@@ -126,6 +133,14 @@ public class DataManager {
         this.myMeasures = myMeasures;
     }
 
+    public ArrayList<Tip> getTips() {
+        return tips;
+    }
+
+    public void setTips(ArrayList<Tip> tips) {
+        DataManager.tips = tips;
+    }
+
     public void addNewWeight(Weight weight){
         myWeights.add(weight);
     }
@@ -134,55 +149,21 @@ public class DataManager {
         myMeasures.add(measure);
     }
 
-    //MyDataManager Methods
-
-    /**
-     * Method will load the connected user's data from database. and update his current device token for Cloud messaging
-     */
-    public void loadUserFromDB() {
-        // Successfully signed in
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
-            @Override
-            public void onSuccess(String s) {
-                token = s;
-                DatabaseReference myRef = getRealTimeDB().getReference(KEYS.KEY_UID_TO_TOKENS).child(user.getUid());
-                myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if(task.isSuccessful()){
-                            myRef.setValue(token);
-                            Log.d("pttt", "token is : " + token);
-                        }
-                    }
-                });
-            }
-        });
-
-
-        DocumentReference docRef = dbFireStore.collection(KEYS.KEY_USERS).document(user.getUid());
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    Log.d("pttt", "DocumentSnapshot data: " + documentSnapshot.getData());
-                    User loadedUser = documentSnapshot.toObject(User.class);
-                    setCurrentUser(loadedUser);
-
-                } else {
-                    Log.d("pttt", "No such document");
-                    Log.d("pttt", user.getUid().toString());
-                }
-
-            }
-
-        });
+    public void addNewTip(Tip tip){
+        tips.add(tip);
     }
 
-    /**
-     * Method which will be called whenever there is a change in the user's list of lists and need to update the database about the change
-     */
+    public Weight getLastWeightByID(String id) {
+        int i;
+        for (i = 0; i < myWeights.size(); i++) {
+            if (myWeights.get(i).getWeightId().equals(id)) {
+                break;
+            }
+        }
+        return myWeights.get(i);
+    }
+    //MyDataManager Methods
+
     public void addMeasureToUser() {
 
         DocumentReference docRef = dbFireStore.collection(KEYS.KEY_USERS).document(currentUser.getUserId());
@@ -219,5 +200,15 @@ public class DataManager {
                 });
     }
 
+    public void storeTipInDB(String tip) {
+       Tip tempTip = new Tip(tip);
+        dbFireStore.collection(KEYS.KEY_TIPS).document(tempTip.getTipId()).set(tempTip);
+        DataManager.getInstance().addNewTip(tempTip);
 
-}
+    }
+
+
+
+
+    }
+

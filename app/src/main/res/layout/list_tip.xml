@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_margin="8dp"
+    android:elevation="7dp"
+    app:cardCornerRadius="30dp"
+    android:backgroundTint="@color/green"
+    app:cardElevation="7dp">
+
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/listTip_LBL_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="חשוב!"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+
+</com.google.android.material.card.MaterialCardView>

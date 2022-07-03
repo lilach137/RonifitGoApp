@@ -6,7 +6,7 @@
     android:id="@+id/panel_DrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ronifitgo.MainActivity"
+    tools:context=".ronifitgo.Activities.Activity_main_user"
     android:background="@drawable/back">
 
 
@@ -26,6 +26,7 @@
                 android:id="@+id/panel_TopAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="15dp"
@@ -33,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/panel_Menu_IMG_profile"
+                    android:id="@+id/main_IMG_profile"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:scaleType="centerCrop"
@@ -43,38 +44,37 @@
                     />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/panel_TextTitle"
+                    android:id="@+id/main_Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
                     android:layout_marginStart="50dp"
+                    android:fontFamily="@font/font3"
+                    android:text="@string/app_name"
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="80dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="80dp"
                     android:layout_gravity="right"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/icon" />
             </LinearLayout>
 
+
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/main_Fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:layout_marginTop="90dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/main_Fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:clipToPadding="false"
-            />
-
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -95,7 +95,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@android:color/transparent"
+            app:backgroundTint="@color/background"
+            android:background="@drawable/circular_progress_bar"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_menu" />
 
@@ -105,9 +106,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:fabCradleMargin="20dp"
+            app:fabCradleMargin="15dp"
             android:background="@color/white"
-            app:fabCradleRoundedCornerRadius="10dp" />
+            android:backgroundTint="@android:color/white"
+
+            app:fabCradleRoundedCornerRadius="20dp" />
 
         <LinearLayout
             android:id="@+id/main_Layout_addButtons"
@@ -125,6 +128,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="5dp"
                 android:text="@string/add_weight_weekly"
+                android:fontFamily="@font/font"
+                android:textSize="22dp"
                 android:textColor="@color/title"
                 app:icon="@drawable/ic_weighning"
                 app:iconTint="@color/title"
@@ -139,17 +144,44 @@
                 android:backgroundTint="@color/white"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/add_measures"
+                android:fontFamily="@font/font"
+                android:textSize="22dp"
                 android:textColor="@color/title"
+                android:layout_marginBottom="5dp"
                 app:icon="@drawable/ic_addmeasure"
                 app:iconTint="@color/title"
                 app:borderWidth="0dp"
                 app:maxImageSize="50dp"
                 app:tint="@color/title" />
 
+<!--            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--                android:id="@+id/main_BTN_picture"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:text="הוסף תמונה"-->
+<!--                android:textColor="@color/title"-->
+<!--                android:fontFamily="@font/miriwin"-->
+<!--                app:icon="@drawable/ic_addphoto"-->
+<!--                app:iconTint="@color/title"-->
+<!--                app:borderWidth="0dp"-->
+<!--                app:maxImageSize="50dp"-->
+<!--                app:tint="@color/title" />-->
 
         </LinearLayout>
 
-
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_animation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            android:visibility="invisible"
+            app:lottie_rawRes="@raw/loading_animation"
+            app:lottie_speed="0.5"
+            />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 

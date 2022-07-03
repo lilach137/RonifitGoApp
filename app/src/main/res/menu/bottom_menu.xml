@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <item
-        android:id="@+id/tips"
-        android:title="@string/tips"
-        android:icon="@drawable/ic_tips"
+        android:id="@+id/profile"
+        android:title="@string/profile"
         app:showAsAction="ifRoom"
-        />
+        android:icon="@drawable/ic_account"/>
+
+
 
     <item
         android:id="@+id/measures"
@@ -31,11 +31,11 @@
         app:showAsAction="ifRoom"
         />
 
+
     <item
-        android:id="@+id/profile"
-        android:title="@string/profile"
+        android:id="@+id/tips"
+        android:title="@string/tips"
+        android:icon="@drawable/ic_tips"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_account"/>
-
-
+        />
 </menu>

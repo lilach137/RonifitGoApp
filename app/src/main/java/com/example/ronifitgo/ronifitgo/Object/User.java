@@ -7,14 +7,13 @@ public class User {
 
     private String userId;
     private String phoneNumber;
-    private String profileImgUrl = "https://firebasestorage.googleapis.com/v0/b/superme-e69d5.appspot.com/o/images%2Fimg_profile_pic.JPG?alt=media&token=5970cec0-9663-4ddd-9395-ef2791ad938d"; //default pic
+    private String profileImgUrl = "";
     private int age;
     private float firstWeight;
-    private float currentWeight;
+    private String lastWeightId;
     private float height;
     private String name;
     private float goal;
-    private int gender; //1 for woman 2 for man
     private ArrayList<String> myMeasures;
     private ArrayList<String> myWeights;
 
@@ -22,16 +21,14 @@ public class User {
     }
 
 
-    public User(String userId, String phoneNumber, int age, float firstWeight, float height, String name, int gender, float goal) {
+    public User(String userId, String phoneNumber, int age, float firstWeight, float height, String name, float goal) {
         this.userId = userId;
         this.phoneNumber = phoneNumber;
         this.profileImgUrl = "https://firebasestorage.googleapis.com/v0/b/superme-e69d5.appspot.com/o/images%2Fimg_profile_pic.JPG?alt=media&token=5970cec0-9663-4ddd-9395-ef2791ad938d";;
         this.age = age;
         this.firstWeight = firstWeight;
-        this.currentWeight = firstWeight;
         this.height = height;
         this.name = name;
-        this.gender = gender;
         this.goal = goal;
         this.myWeights = new ArrayList<>();
         this.myMeasures = new ArrayList<>();
@@ -77,15 +74,6 @@ public class User {
         return this;
     }
 
-    public float getCurrentWeight() {
-        return currentWeight;
-    }
-
-    public User setCurrentWeight(float currentWeight) {
-        this.currentWeight = currentWeight;
-        return this;
-    }
-
     public float getHeight() {
         return height;
     }
@@ -95,14 +83,15 @@ public class User {
         return this;
     }
 
-    public int getGender() {
-        return gender;
+    public String getLastWeightId() {
+        return lastWeightId;
     }
 
-    public User setGender(int gender) {
-        this.gender = gender;
+    public User setLastWeightId(String lastWeightId) {
+        this.lastWeightId = lastWeightId;
         return this;
     }
+
 
     public String getName() {
         return name;
@@ -166,7 +155,6 @@ public class User {
                 ", weight=" + firstWeight +
                 ", height=" + height +
                 ", name='" + name + '\'' +
-                ", gender=" + gender +
                 '}';
     }
 }

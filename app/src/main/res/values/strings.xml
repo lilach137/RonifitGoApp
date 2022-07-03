@@ -2,7 +2,7 @@
     <string name="app_name">RonifitGo</string>
     <string name="tips">טיפים</string>
     <string name="data">משקלים</string>
-    <string name="Measures">מדדים</string>
+    <string name="Measures">היקפים</string>
     <string name="profile">פרופיל</string>
     <string name="add_weight_weekly">הוסף שקילה</string>
     <string name="add_measures">הוסף מדידה</string>
@@ -25,4 +25,5 @@
     <string name="calculate">הוסף את הפרטים שלי</string>
     <string name="cm">ס"מ</string>
     <string name="phone_login">התחברות באמצעות טלפון</string>
+
 </resources>

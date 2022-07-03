@@ -1,4 +1,4 @@
-package com.example.ronifitgo.ronifitgo;
+package com.example.ronifitgo.ronifitgo.Activities;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -8,10 +8,9 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ronifitgo.R;
 import com.example.ronifitgo.ronifitgo.Object.Date;
-import com.example.ronifitgo.ronifitgo.Object.Measure;
 import com.example.ronifitgo.ronifitgo.Object.User;
 import com.example.ronifitgo.ronifitgo.Object.Weight;
 import com.example.ronifitgo.ronifitgo.utils.DataManager;
@@ -29,7 +27,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.StorageReference;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -37,9 +34,9 @@ import java.util.Calendar;
 
 public class Activity_addWeight extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     private Calendar calendar;
-    private EditText newWeight_TIL_calender,newWeight_TIL_weight;
-    private TextInputEditText newWeight_LBL_muscleTitle, newWeight_LBL_fatTitle;
-    private MaterialButton newWeight_BTN_Save;
+    private TextInputEditText newWeight_EDT_calender,newWeight_EDT_weight;
+    private TextInputEditText newWeight_EDT_pFat, newWeight_EDT_pMuscle;
+    private Button newWeight_BTN_Save;
     float count_weight = 60;
     float count_pFat = 53;
     float count_pMuscle = 25;
@@ -59,7 +56,7 @@ public class Activity_addWeight extends AppCompatActivity implements DatePickerD
     }
 
     private void initButtons() {
-        newWeight_TIL_calender.setOnClickListener(new View.OnClickListener() {
+        newWeight_EDT_calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePickerDialog();
@@ -69,27 +66,12 @@ public class Activity_addWeight extends AppCompatActivity implements DatePickerD
         newWeight_BTN_Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newWeight_TIL_weight.setInputType(InputType.TYPE_CLASS_NUMBER);
-                newWeight_LBL_fatTitle.setInputType(InputType.TYPE_CLASS_NUMBER);
-                newWeight_LBL_muscleTitle.setInputType(InputType.TYPE_CLASS_NUMBER);
-                count_weight = Float.parseFloat(newWeight_TIL_weight.getText().toString());
-                count_pFat = Float.parseFloat(newWeight_LBL_fatTitle.getText().toString());
-                count_pMuscle = Float.parseFloat(newWeight_LBL_muscleTitle.getText().toString());
-
-                tempWeight = new Weight(count_pFat,count_pMuscle,count_weight,date);
-                dataManager.setLastWeight(tempWeight);
-                currentUser.addToWeightsUid(tempWeight.getWeightId());
-                dataManager.addWeightToUser();
-                dataManager.addNewWeight(tempWeight);
-                storeWeightInDB(tempWeight);
-                Toast.makeText(getApplicationContext(),"השקילה השבועית החדשה שלך נשמרה בהצלחה", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Activity_addWeight.this, MainActivity.class));
+                saveData();
             }
         });
     }
 
     private void storeWeightInDB(Weight tempWeight) {
-        //Add the item to the current grocery list
         db.collection(KEYS.KEY_USERS)
                 .document(currentUser.getUserId())
                 .collection(KEYS.KEY_MY_WEIGHTS)
@@ -99,7 +81,6 @@ public class Activity_addWeight extends AppCompatActivity implements DatePickerD
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d("pttt", "DocumentSnapshot Successfully written!");
-                        //startActivity(new Intent(CreateListActivity.this, MainActivity.class));
                     }
 
                 })
@@ -109,16 +90,35 @@ public class Activity_addWeight extends AppCompatActivity implements DatePickerD
                         Log.w("pttt", "Error adding document", e);
                     }
                 });
+    }
 
+        private void storeLastWeightIDInDB(String weightId){
+            db.collection(KEYS.KEY_USERS)
+                    .document(currentUser.getUserId())
+                    .update("lastWeightId",weightId)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.d("pttt", "DocumentSnapshot Successfully written!");
+                        }
+
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("pttt", "Error adding document", e);
+                        }
+                    });
     }
 
     private void findViews() {
-        newWeight_TIL_calender = findViewById(R.id.newWeight_TIL_calender);
-        newWeight_BTN_Save = findViewById(R.id.newWeight_BTN_Save);
 
-        newWeight_LBL_muscleTitle= findViewById(R.id.newWeight_LBL_muscleTitle);
-        newWeight_LBL_fatTitle= findViewById(R.id.newWeight_LBL_fatTitle);
-        newWeight_TIL_weight = findViewById(R.id.newWeight_TIL_weight);
+
+        newWeight_EDT_calender = findViewById(R.id.newWeight_EDT_calender);
+        newWeight_BTN_Save = findViewById(R.id.newWeight_BTN_save);
+        newWeight_EDT_pMuscle= findViewById(R.id.newWeight_EDT_pMuscle);
+        newWeight_EDT_pFat= findViewById(R.id.newWeight_EDT_pFat);
+        newWeight_EDT_weight = findViewById(R.id.newWeight_EDT_weight);
 
 
     }
@@ -135,9 +135,10 @@ public class Activity_addWeight extends AppCompatActivity implements DatePickerD
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String Sdate = dayOfMonth + "/" + month+ "/" + year;
+        month = month+1;
+        String Sdate = dayOfMonth + "/" + month + "/" + year;
         date = new Date(month,year,dayOfMonth);
-        newWeight_TIL_calender.setText(Sdate);
+        newWeight_EDT_calender.setText(Sdate);
     }
 
     @Override
@@ -149,8 +150,9 @@ public class Activity_addWeight extends AppCompatActivity implements DatePickerD
                 .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(Activity_addWeight.this, MainActivity.class));
                         finish();
+                        startActivity(new Intent(Activity_addWeight.this, Activity_main_user.class));
+
                     }
                 })
                 .setNegativeButton("לא", new DialogInterface.OnClickListener() {
@@ -161,6 +163,30 @@ public class Activity_addWeight extends AppCompatActivity implements DatePickerD
                 })
                 .show();
     }
+
+    public void saveData(){
+        newWeight_EDT_weight.setInputType(InputType.TYPE_CLASS_NUMBER);
+        newWeight_EDT_pFat.setInputType(InputType.TYPE_CLASS_NUMBER);
+        newWeight_EDT_pMuscle.setInputType(InputType.TYPE_CLASS_NUMBER);
+        count_weight = Float.parseFloat(newWeight_EDT_weight.getText().toString());
+        count_pFat = Float.parseFloat( newWeight_EDT_pFat.getText().toString());
+        count_pMuscle = Float.parseFloat( newWeight_EDT_pMuscle.getText().toString());
+
+        tempWeight = new Weight(count_pFat,count_pMuscle,count_weight,date);
+
+
+        currentUser.setLastWeightId(tempWeight.getWeightId());
+        currentUser.addToWeightsUid(tempWeight.getWeightId());
+        dataManager.addWeightToUser();
+        dataManager.addNewWeight(tempWeight);
+        storeLastWeightIDInDB(tempWeight.getWeightId());
+        storeWeightInDB(tempWeight);
+        Toast.makeText(getApplicationContext(),"השקילה השבועית החדשה שלך נשמרה בהצלחה", Toast.LENGTH_SHORT).show();
+        finish();
+        startActivity(new Intent(Activity_addWeight.this, Activity_main_user.class));
+    }
+
+
 }
 
 

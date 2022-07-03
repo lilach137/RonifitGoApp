@@ -35,6 +35,8 @@ public class KEYS {
         public static final String EDITOR = "EapTzSRN1WRAaCnGBpTBj4OBr2y2";
 
 
-    }
+    public static final String KEY_MEASURES_PICTURES = "measures_pictures";
+    public static final String KEY_TIPS = "tips";
+}
 
 

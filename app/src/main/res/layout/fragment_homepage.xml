@@ -1,32 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     tools:context=".ronifitgo.Fragments.">
 
     <LinearLayout
-        android:id="@+id/weights_progressBars"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_muscle"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/homePage_IMG_user"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            app:civ_border_color="@color/title"
+            app:civ_border_width="2dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_account"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_TXT_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp">
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/font"
+        android:textSize="22dp"
+        android:text="שם המתאמן :"
+        android:layout_gravity="center" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/green" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile_TXT_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font"
+            android:textSize="22dp"
+            android:text="משקל נוכחי :"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/green" />
+    <LinearLayout
+        android:id="@+id/lay_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile_TXT_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font"
+            android:textSize="22dp"
+            android:layout_weight="1"
+            android:text="גובה :"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+           />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile_TXT_age"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font"
+            android:textSize="22dp"
+            android:text="גיל :"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            />
+
+    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/green" />
+
+        <LinearLayout
+            android:id="@+id/lay_info2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/profile_TXT_goal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font"
+                android:textSize="22dp"
+                android:text="משקל יעד :"
+                android:layout_gravity="right"
+                 />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/profile_TXT_first"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font"
+                android:textSize="22dp"
+                android:text="משקל התחלתי :"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/weights_progressBars"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
+            android:background="@color/fui_transparent"
             tools:context="com.skholingua.android.custom_progressbar_circular.MainActivity" >
 
 
@@ -41,9 +159,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="@string/title_musclePercentage"
+                    android:fontFamily="@font/font"
+                    android:textSize="22dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="#03A9F4"
-                    android:textSize="20dp" />
+                    android:textColor="#03A9F4" />
 
                 <ProgressBar
                     android:id="@+id/muscle_txt_progressBar"
@@ -68,23 +187,19 @@
                     android:layout_alignBottom="@+id/muscle_txt_progressBar"
                     android:layout_centerInParent="true"
                     android:text="70%"
+                    android:fontFamily="@font/font"
+                    android:textSize="22dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#03A9F4"
-                    android:textSize="20dp" />
+                   />
             </RelativeLayout>
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_fat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
@@ -102,10 +217,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/font"
                     android:text="@string/title_fatPercentage"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#E91E63"
-                    android:textSize="20dp" />
+                    android:textSize="22dp" />
 
                 <ProgressBar
                     android:id="@+id/fat_txt_progressBar"
@@ -129,75 +245,72 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/fat_txt_progressBar"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/font"
                     android:text="70%"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#E91E63"
-                    android:textSize="20dp" />
+                    android:textSize="22dp" />
             </RelativeLayout>
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            tools:context="com.skholingua.android.custom_progressbar_circular.MainActivity">
+
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="com.skholingua.android.custom_progressbar_circular.MainActivity" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
 
-
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/weight_txt_titleProgress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/font"
+                    android:text="@string/title_goal"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/title"
+                    android:textSize="22dp" />
 
-                    <TextView
-                        android:id="@+id/weight_txt_titleProgress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/title_goal"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/green"
-                        android:textSize="20dp" />
-
-                    <ProgressBar
-                        android:id="@+id/weight_txt_progressBar"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="60dp"
-                        android:background="@drawable/circle_shape"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/circular_progress_bar"
-                        android:secondaryProgress="40" />
+                <ProgressBar
+                    android:id="@+id/weight_txt_progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:secondaryProgress="40" />
 
 
-                    <TextView
-                        android:id="@+id/weight_txt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/weight_txt_progressBar"
-                        android:layout_centerInParent="true"
-                        android:text="40%"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/green"
-                        android:textSize="20dp" />
-                </RelativeLayout>
+                <TextView
+                    android:id="@+id/weight_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/weight_txt_progressBar"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/font"
+                    android:text="40%"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/title"
+                    android:textSize="22dp" />
             </RelativeLayout>
+        </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>

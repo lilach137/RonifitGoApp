@@ -4,266 +4,332 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ronifitgo.Activity_addMeasures"
+    android:orientation="vertical"
+    tools:context=".ronifitgo.Activities.Activity_addMeasures"
     android:background="@drawable/back">
 
+    <include layout="@layout/tool_bar"
+        android:id="@+id/addWeight_toolbar"/>
 
-    <LinearLayout
-        android:id="@+id/newItem_AppBar"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/addMeasure_cover"
+        android:layout_below="@id/addWeight_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:elevation="7dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="7dp">
 
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/newItem_LBL_title"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/addMeasure_IMG"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:text="מדידת הקפים"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="240dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cover_measure" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מדידת היקפים"
+            android:fontFamily="@font/font"
+            android:textSize="30dp"
+            android:layout_gravity="bottom|center"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            />
 
-
-    </LinearLayout>
-
+    </com.google.android.material.card.MaterialCardView>
 
     <ScrollView
-        android:id="@+id/newMeasure_scroll"
+        android:id="@+id/addMeasure_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/newMeasure_BTN_Save"
-        android:layout_below="@+id/newItem_AppBar">
+        android:layout_below="@id/addMeasure_cover"
+        android:layout_marginTop="5dp">
 
-        <RelativeLayout
+
+        <LinearLayout
+            android:id="@+id/lay_info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lay_info1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
-            <ImageView
-                android:id="@+id/newMeasure_ItemPicture"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_centerHorizontal="true"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/newMeasure_IMG_photo"
+                android:layout_marginTop="25dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:src="@drawable/ic_addphoto"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@id/addMeasure_LBL_calender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/icon" />
-
-            <EditText
-                android:id="@+id/newMeasure_TIL_calender"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newMeasure_ItemPicture"
-                android:layout_centerHorizontal="true"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:hint="בחר תאריך"
-                android:textColor="@color/green"
-                android:textColorHint="@color/title"
-                android:textSize="20dp">
-
-            </EditText>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newMeasure_TIL_m1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newMeasure_TIL_calender"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="20dp"
-                android:hint="היקף זרוע"
-                android:textColorHint="@color/white"
-                app:boxBackgroundColor="@color/green"
-                app:boxStrokeColor="@color/title"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/miriwin"
+                android:hint="תאריך"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/green"
                 app:boxStrokeWidth="2dp"
-                app:hintTextColor="@color/title">
+                app:errorEnabled="true"
+                app:hintTextColor="@color/green">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/newMeasure_TIEL_m1"
+                    android:id="@+id/addMeasure_EDT_calender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
                     android:ems="30"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/font"
                     android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:outlineAmbientShadowColor="@color/title"
-                    android:shadowColor="@color/white"
-                    android:textColor="@color/title" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newMeasure_TIL_m2"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newMeasure_TIL_m1"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="20dp"
-                android:hint="היקף חזה"
-                android:textColorHint="@color/white"
-                app:boxBackgroundColor="@color/green"
-                app:boxStrokeColor="@color/title"
-                app:boxStrokeWidth="2dp"
-                app:hintTextColor="@color/title">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/newMeasure_TIEL_m2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="30"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:outlineAmbientShadowColor="@color/title"
-                    android:shadowColor="@color/white"
-                    android:textColor="@color/title" />
-
+                    android:inputType="textPersonName"
+                    android:maxLength="20"
+                    android:outlineAmbientShadowColor="@color/green"
+                    android:shadowColor="@color/green"
+                    android:textSize="15dp"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newMeasure_TIL_m3"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_weights"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newMeasure_TIL_m2"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="20dp"
-                android:hint="היקף מותן"
-                android:textColorHint="@color/white"
-                app:boxBackgroundColor="@color/green"
-                app:boxStrokeColor="@color/title"
-                app:boxStrokeWidth="2dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/addMeasure_LBL_calender"
+                android:orientation="horizontal">
 
-                app:hintTextColor="@color/title">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/newMeasure_TIEL_m3"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="30"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:outlineAmbientShadowColor="@color/title"
-                    android:shadowColor="@color/white"
-                    android:textColor="@color/title" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/miriwin"
+                    android:hint="מותן"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/green"
+                    app:boxStrokeWidth="2dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/green">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newMeasure_TIL_m4"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/newMeasure_TIEL_m3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="30"
+                        android:fontFamily="@font/font"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20"
+                        android:textSize="15dp"
+                        android:outlineAmbientShadowColor="@color/green"
+                        android:shadowColor="@color/green"
+                        android:textColor="@color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/miriwin"
+                    android:hint="חזה"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/green"
+                    app:boxStrokeWidth="2dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/green">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/newMeasure_TIEL_m2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="30"
+                        android:fontFamily="@font/font"
+                        android:textSize="15dp"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20"
+                        android:outlineAmbientShadowColor="@color/green"
+                        android:shadowColor="@color/green"
+                        android:textColor="@color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/miriwin"
+                    android:hint="זרוע "
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/green"
+                    app:boxStrokeWidth="2dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/green">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/newMeasure_TIEL_m1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="30"
+                        android:fontFamily="@font/font"
+                        android:textSize="15dp"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20"
+                        android:outlineAmbientShadowColor="@color/green"
+                        android:shadowColor="@color/green"
+                        android:textColor="@color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_measure2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newMeasure_TIL_m3"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="20dp"
-                android:hint="היקף טבור"
-                android:textColorHint="@color/white"
-                app:boxBackgroundColor="@color/green"
-                app:boxStrokeColor="@color/title"
-                app:boxStrokeWidth="2dp"
-                app:hintTextColor="@color/title">
+                android:layout_height="100dp"
+                android:layout_below="@+id/addMeasure_LBL_calender"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/newMeasure_TIEL_m4"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="30"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:outlineAmbientShadowColor="@color/title"
-                    android:shadowColor="@color/white"
-                    android:textColor="@color/title" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/miriwin"
+                    android:hint="ירך"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/green"
+                    app:boxStrokeWidth="2dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/green">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newMeasure_TIL_m5"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newMeasure_TIL_m4"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="20dp"
-                android:hint="היקף ישבן"
-                android:textColorHint="@color/white"
-                app:boxBackgroundColor="@color/green"
-                app:boxStrokeColor="@color/title"
-                app:boxStrokeWidth="2dp"
-                app:hintTextColor="@color/title">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/newMeasure_TIEL_m6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="30"
+                        android:fontFamily="@font/font"
+                        android:textSize="15dp"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20"
+                        android:outlineAmbientShadowColor="@color/green"
+                        android:shadowColor="@color/green"
+                        android:textColor="@color/black" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/newMeasure_TIEL_m5"
-                    android:layout_width="match_parent"
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="30"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:outlineAmbientShadowColor="@color/title"
-                    android:shadowColor="@color/white"
-                    android:textColor="@color/title" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/miriwin"
+                    android:hint="ישבן"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/green"
+                    app:boxStrokeWidth="2dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/green">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newMeasure_TIL_m6"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newMeasure_TIL_m5"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="20dp"
-                android:hint="היקף ירך"
-                android:textColorHint="@color/white"
-                app:boxBackgroundColor="@color/green"
-                app:boxStrokeColor="@color/title"
-                app:boxStrokeWidth="2dp"
-                app:hintTextColor="@color/title">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/newMeasure_TIEL_m5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="30"
+                        android:fontFamily="@font/font"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20"
+                        android:textSize="15dp"
+                        android:outlineAmbientShadowColor="@color/green"
+                        android:shadowColor="@color/green"
+                        android:textColor="@color/black" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/newMeasure_TIEL_m6"
-                    android:layout_width="match_parent"
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="30"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:outlineAmbientShadowColor="@color/title"
-                    android:shadowColor="@color/white"
-                    android:textColor="@color/title" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/miriwin"
+                    android:hint="טבור "
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/green"
+                    app:boxStrokeWidth="2dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/green">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/newMeasure_TIEL_m4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="30"
+                        android:fontFamily="@font/font"
+                        android:textSize="15dp"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20"
+                        android:outlineAmbientShadowColor="@color/green"
+                        android:shadowColor="@color/green"
+                        android:textColor="@color/black" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-        </RelativeLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/newMeasure_BTN_Save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_weights"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/calculate_btn"
+                android:backgroundTint="@color/green"
+                android:fontFamily="@font/font"
+                android:text="שמור את המדידה שלי"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </ScrollView>
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/newMeasure_BTN_Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/green"
-        android:text="שמור שינויים"
-        android:textColor="@color/white"
-        android:layout_centerInParent="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:cornerRadius="30dp" />
 
 
 </RelativeLayout>

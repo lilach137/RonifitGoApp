@@ -65,4 +65,6 @@ public class Weight {
         this.weightId = weightId;
         return this;
     }
+
+
 }

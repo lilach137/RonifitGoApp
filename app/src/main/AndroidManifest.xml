@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RonifitGo">
         <activity
-            android:name=".ronifitgo.Activity_splash"
+            android:name=".ronifitgo.Activities.Activity_splash"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,26 +22,34 @@
         </activity>
 
         <activity
-            android:name=".ronifitgo.Activity_enter"
+            android:name=".ronifitgo.Activities.Activity_enter"
+            android:exported="true" />
+        <activity
+            android:name=".ronifitgo.Activities.Activity_main_coach"
+            android:exported="true" />
+        <activity
+            android:name=".ronifitgo.Activities.Activity_sign_up"
             android:exported="true" />
 
         <activity
-            android:name=".ronifitgo.Activity_sign_up"
-            android:exported="true" />
-
-        <activity
-            android:name=".ronifitgo.MainActivity"
+            android:name=".ronifitgo.Activities.Activity_main_user"
             android:exported="true"/>
 
         <activity
-            android:name=".ronifitgo.Activity_addMeasures"
+            android:name=".ronifitgo.Activities.Activity_addMeasures"
             android:exported="true"/>
 
         <activity
-            android:name=".ronifitgo.Activity_addWeight"
+            android:name=".ronifitgo.Activities.Activity_addWeight"
             android:exported="true"/>
 
+        <activity
+            android:name=".ronifitgo.Activities.Activity_trainer"
+            android:exported="true"/>
 
+        <activity
+            android:name=".ronifitgo.Activities.Activity_goodbye"
+            android:exported="true"/>
 
     </application>
 
