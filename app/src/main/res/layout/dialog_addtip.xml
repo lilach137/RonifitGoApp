@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/miriwin"
+                android:fontFamily="@font/font"
                 android:layout_gravity="center"
                 app:errorEnabled="true"
                 android:hint="הוסף טיפ חדש"

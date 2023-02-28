@@ -10,9 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.ronifitgo.ronifitgo.utils.Screen_Util;
 import com.example.ronifitgo.R;
 
 
@@ -28,7 +26,8 @@ public class Activity_splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Screen_Util.hideSystemUI(this);
+
+        //Screen_Util.hideSystemUI(this);
         findViews();
 
         showViewSlideDown(splash_IMG_logo);

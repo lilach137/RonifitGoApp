@@ -220,7 +220,7 @@ public class Activity_enter extends AppCompatActivity {
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true;
-        popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow = new PopupWindow(popupView, 100, 100, focusable);
 
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
         dialog_BTN_signIn =(MaterialButton) popupView.findViewById(R.id.dialog_BTN_signIn);
