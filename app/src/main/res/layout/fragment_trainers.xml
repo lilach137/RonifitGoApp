@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ronifitgo.Fragments.fragment_allTrainers">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<com.google.android.material.textview.MaterialTextView
+    android:id="@+id/fUsers_TXT_title"
+    android:layout_width="wrap_content"
+    android:fontFamily="@font/font"
+    android:textSize="22dp"
+    android:layout_height="30dp"
+    android:text="רשימת מתאמנים"
+    android:textStyle="bold"
+    android:layout_gravity="center"/>
+
+    <ScrollView
+        android:id="@+id/listUsers_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fWeights_TXT_title">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_RECYC_myUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:clipToPadding="false"
+        />
+
+</ScrollView>
+</LinearLayout>
+</FrameLayout>
+
